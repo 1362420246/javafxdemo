@@ -10,12 +10,6 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
 
 /**
  * 简单入门
@@ -29,7 +23,7 @@ import java.awt.image.BufferedImage;
  */
 public class HelloWorld extends Application {
 
-    private TrayIcon trayIcon;
+
 
     /**
      * 所有JavaFX应用程序的主要入口点。
@@ -37,7 +31,7 @@ public class HelloWorld extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
-        enableTray(primaryStage);
+
         //4.控件
         /**
          * 首先我们创建一个Button，当我们点击Button的时候，改变Button的内容。
@@ -88,8 +82,7 @@ public class HelloWorld extends Application {
         // 设置stage的scen，然后显示我们的stage
         primaryStage.setScene(scene);
         primaryStage.setTitle("Hello World!");
-//        primaryStage.show(); TODO 开启显示  无法关闭最小化
-        primaryStage.setOnCloseRequest(arg0->primaryStage.hide());
+        primaryStage.show();
 
     }
 
@@ -98,83 +91,7 @@ public class HelloWorld extends Application {
         launch(args);
     }
 
-    //右小角,最小化.
-    private void enableTray(final Stage stage) {
-        PopupMenu popupMenu = new PopupMenu();
-        java.awt.MenuItem openItem = new java.awt.MenuItem("显示");
-        java.awt.MenuItem hideItem = new java.awt.MenuItem("最小化");
-        java.awt.MenuItem quitItem = new java.awt.MenuItem("退出");
 
-        ActionListener acl = e -> {
-            MenuItem item = (MenuItem) e.getSource();
-            Platform.setImplicitExit(false); //多次使用显示和隐藏设置false
-
-            if (item.getLabel().equals("退出")) {
-                SystemTray.getSystemTray().remove(trayIcon);
-                Platform.exit();
-                return;
-            }
-            if (item.getLabel().equals("显示")) {
-                Platform.runLater(() -> stage.show());
-            }
-            if (item.getLabel().equals("最小化")) {
-                Platform.runLater(() -> stage.hide());
-            }
-
-        };
-
-        //双击事件方法
-        MouseListener sj = new MouseListener() {
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-            @Override
-            public void mouseExited(MouseEvent e) {
-            }
-            @Override
-            public void mouseEntered(MouseEvent e) {
-            }
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                Platform.setImplicitExit(false); //多次使用显示和隐藏设置false
-                if (e.getClickCount() == 2) {
-                    if (stage.isShowing()) {
-                        Platform.runLater(() -> stage.hide());
-                    }else{
-                        Platform.runLater(() -> stage.show());
-                    }
-                }
-            }
-        };
-
-
-
-        openItem.addActionListener(acl);
-        quitItem.addActionListener(acl);
-        hideItem.addActionListener(acl);
-
-        popupMenu.add(openItem);
-        popupMenu.add(hideItem);
-        popupMenu.add(quitItem);
-
-        try {
-            SystemTray tray = SystemTray.getSystemTray();
-            BufferedImage image = ImageIO.read(HelloWorld.class
-                    .getResourceAsStream("station.jpg"));
-            trayIcon = new TrayIcon(image, "自动备份工具", popupMenu);
-            trayIcon.setToolTip("自动备份工具");
-            tray.add(trayIcon);
-            trayIcon.addMouseListener(sj);
-
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
 
 }
