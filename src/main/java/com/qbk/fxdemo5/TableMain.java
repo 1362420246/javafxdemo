@@ -1,22 +1,24 @@
 package com.qbk.fxdemo5;
 
 import javafx.application.Application;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 /**
  * @Author: quboka
@@ -57,23 +59,34 @@ public class TableMain extends Application {
         firstNameCol.setMinWidth(100);
         //设置 表单列 展示的数据字段
         firstNameCol.setCellValueFactory(
-                new PropertyValueFactory<>("firstName"));
+                new PropertyValueFactory<Person,String>("firstName"));
 
         TableColumn lastNameCol = new TableColumn("Last Name");
         lastNameCol.setMinWidth(100);
         //设置 表单列 展示的数据字段
         lastNameCol.setCellValueFactory(
-                new PropertyValueFactory<>("lastName"));
+                new PropertyValueFactory<Person,String>("lastName"));
 
         TableColumn emailCol = new TableColumn("Email");
 
         //多选框列
         TableColumn checkBoxColumn = new TableColumn("勾选");
-        checkBoxColumn.setCellFactory(CheckBoxTableCell.forTableColumn(checkBoxColumn));
+//        checkBoxColumn.setCellFactory(CheckBoxTableCell.forTableColumn(checkBoxColumn));
+        checkBoxColumn.setCellFactory(CheckBoxTableCell.forTableColumn(new Callback<Integer, ObservableValue<Boolean>>() {
+            @Override
+            public ObservableValue<Boolean> call(Integer param) {
+                System.out.println("Cours "+data.get(param).getFirstName());
+                return data.get(param).getGouxuan();
+            }
+        }));
 
+
+        //多选框列第二中种
+        TableColumn<Person,CheckBox> registered_col = new TableColumn<Person,CheckBox>("勾选2");
+        registered_col.setCellValueFactory(new PropertyValueFactory<Person,CheckBox>("checkBox"));
 
         //TableView类的getColumns方法将创建的列添加到表中。
-        table.getColumns().addAll(firstNameCol, lastNameCol, emailCol,checkBoxColumn);
+        table.getColumns().addAll(firstNameCol, lastNameCol, emailCol,checkBoxColumn,registered_col);
 
         //初始化数据
         table.setItems(data);
@@ -104,8 +117,26 @@ public class TableMain extends Application {
             data.add(new Person("Z","X"));
         });
 
+        //多选框 获取
+        Button button = new Button(" 进行数据获取");
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                for (Person person : data) {
+                    boolean registered = person.getCheckBox().isSelected();
+                    System.out.print(registered);
+                }
+                System.out.println("----------");
+                for (Person person : data) {
+                    boolean registered = person.isGouxuan();
+                    System.out.print(registered);
+                }
+                System.out.println("");
+            }
+        });
+
         //水平布局
-        hb.getChildren().addAll(addButton);
+        hb.getChildren().addAll(addButton ,button);
         //间距
         hb.setSpacing(3);
 

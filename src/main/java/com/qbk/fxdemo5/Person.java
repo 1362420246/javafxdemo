@@ -1,6 +1,8 @@
 package com.qbk.fxdemo5;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.control.CheckBox;
 
 /**
  * @Author: quboka
@@ -19,10 +21,13 @@ import javafx.beans.property.SimpleStringProperty;
 public class Person {
     private final SimpleStringProperty firstName;
     private final SimpleStringProperty lastName;
+    private final SimpleBooleanProperty gouxuan = new SimpleBooleanProperty();
+    private CheckBox checkBox = new CheckBox();
 
     Person(String fName, String lName) {
         this.firstName = new SimpleStringProperty(fName);
         this.lastName = new SimpleStringProperty(lName);
+
     }
 
     public String getFirstName() {
@@ -40,4 +45,24 @@ public class Person {
     public void setLastName(String fName) {
         lastName.set(fName);
     }
+
+    public boolean isGouxuan() {
+        return gouxuan.get();
+    }
+    public SimpleBooleanProperty getGouxuan() {
+        return gouxuan;
+    }
+
+    public void setGouxuan(boolean gouxuan) {
+        this.gouxuan.set(gouxuan);
+    }
+
+    public CheckBox getCheckBox() {
+        return checkBox;
+    }
+
+    public void setCheckBox(CheckBox checkBox) {
+        this.checkBox = checkBox;
+    }
+
 }
