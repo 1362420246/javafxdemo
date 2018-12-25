@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.collections.*?>
+
+<Pane id = "testPane"
+            fx:controller="com.qbk.controller.DbController"
+            stylesheets = "/css/TestPane.css"
+            xmlns="http://javafx.com/javafx/8.0.31"
+            xmlns:fx="http://javafx.com/fxml/1">
+
+    <children>
+        <Label layoutX="34.0" layoutY="30.0" prefHeight="20.0" prefWidth="60.0" text="ip" />
+        <TextField fx:id="ipText" layoutX="108.0" layoutY="25.0" />
+        <Label layoutX="34.0" layoutY="73.0" prefHeight="20.0" prefWidth="60.0" text="端口" />
+        <Label layoutX="34.0" layoutY="113.0" prefHeight="20.0" prefWidth="60.0" text="账号" />
+        <TextField fx:id="portText" layoutX="108.0" layoutY="68.0" />
+        <TextField fx:id="usernameText" layoutX="108.0" layoutY="108.0" />
+        <Label layoutX="34.0" layoutY="158.0" prefHeight="20.0" prefWidth="60.0" text="密码" />
+        <PasswordField fx:id="passwordText" layoutX="108.0" layoutY="153.0" />
+        <Button  fx:id="checkoutButton" layoutX="60.0" layoutY="234.0" mnemonicParsing="false" text="校验" onAction="#onCheckout" />
+        <Button  fx:id="sureButton" layoutX="174.0" layoutY="234.0" mnemonicParsing="false" text="确定" onAction="#onSure" />
+        <ChoiceBox fx:id="driveChoice" layoutX="317.0" layoutY="25.0" nodeOrientation="RIGHT_TO_LEFT" prefWidth="150.0"  />
+        <TextField fx:id="dbNameText" layoutX="108.0" layoutY="194.0" promptText="库名"  />
+        <Label layoutX="34.0" layoutY="199.0" prefHeight="20.0" prefWidth="60.0" text="db" />
+        <Button layoutX="283.0" layoutY="234.0" mnemonicParsing="false" text="返回" onAction="#goback"/>
+    </children>
+
+
+
+
+</Pane>
+

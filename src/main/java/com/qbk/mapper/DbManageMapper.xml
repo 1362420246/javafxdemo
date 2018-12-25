@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qbk.mapper.DbManageMapper">
+  <resultMap id="BaseResultMap" type="com.qbk.entity.DbManage">
+    <id column="KEY" jdbcType="VARCHAR" property="key" />
+    <result column="DRIVE" jdbcType="VARCHAR" property="drive" />
+    <result column="IP" jdbcType="VARCHAR" property="ip" />
+    <result column="PORT" jdbcType="VARCHAR" property="port" />
+    <result column="DB" jdbcType="VARCHAR" property="db" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    KEY, DRIVE, IP, PORT, DB, USERNAME, PASSWORD
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from T_DB
+    where KEY = #{key,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from T_DB
+    where KEY = #{key,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.qbk.entity.DbManage">
+    insert into T_DB (KEY, DRIVE, IP,
+    PORT, DB, USERNAME,
+    PASSWORD)
+    values (#{key,jdbcType=VARCHAR}, #{drive,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR},
+    #{port,jdbcType=VARCHAR}, #{db,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR},
+    #{password,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qbk.entity.DbManage">
+    insert into T_DB
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="key != null">
+        KEY,
+      </if>
+      <if test="drive != null">
+        DRIVE,
+      </if>
+      <if test="ip != null">
+        IP,
+      </if>
+      <if test="port != null">
+        PORT,
+      </if>
+      <if test="db != null">
+        DB,
+      </if>
+      <if test="username != null">
+        USERNAME,
+      </if>
+      <if test="password != null">
+        PASSWORD,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="key != null">
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="drive != null">
+        #{drive,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="db != null">
+        #{db,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qbk.entity.DbManage">
+    update T_DB
+    <set>
+      <if test="drive != null">
+        DRIVE = #{drive,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        IP = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        PORT = #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="db != null">
+        DB = #{db,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where KEY = #{key,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qbk.entity.DbManage">
+    update T_DB
+    set DRIVE = #{drive,jdbcType=VARCHAR},
+    IP = #{ip,jdbcType=VARCHAR},
+    PORT = #{port,jdbcType=VARCHAR},
+    DB = #{db,jdbcType=VARCHAR},
+    USERNAME = #{username,jdbcType=VARCHAR},
+    PASSWORD = #{password,jdbcType=VARCHAR}
+    where KEY = #{key,jdbcType=VARCHAR}
+  </update>
+
+
+  <select id="selectSourceList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from T_DB
+  </select>
+
+  <delete id="deleteDbByList" parameterType="String">
+    delete from T_DB
+    where KEY IN
+    <foreach collection="list" separator="," open="(" close=")" item="key">
+        #{key}
+    </foreach>
+
+  </delete>
+
+
+</mapper>

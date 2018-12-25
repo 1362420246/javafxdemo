@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.collections.*?>
+
+<Pane id="testPane" prefHeight="544.0" prefWidth="737.0" stylesheets="/css/TestPane.css"
+      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.qbk.controller.DbManageController">
+    <children>
+        <TableView fx:id="dbTable" layoutX="41.0" layoutY="22.0" prefHeight="339.0" prefWidth="766.0">
+            <columns>
+                <TableColumn fx:id="key" prefWidth="75.0" text="名称" />
+                <TableColumn fx:id="drive" prefWidth="75.0" text="驱动" />
+                <TableColumn fx:id="ip" prefWidth="75.0" text="ip" />
+                <TableColumn fx:id="port" prefWidth="75.0" text="端口" />
+                <TableColumn fx:id="db" prefWidth="75.0" text="库名" />
+                <TableColumn fx:id="username" prefWidth="111.0" text="用户名" />
+                <TableColumn fx:id="password" prefWidth="92.0" text="密码" />
+                <TableColumn fx:id="status" prefWidth="92.0" text="状态" />
+                <TableColumn fx:id="checkBoxColumn" prefWidth="92.0" text="勾选" />
+            </columns>
+        </TableView>
+        <Button fx:id="addButton" layoutX="51.0" layoutY="421.0" mnemonicParsing="false" text="新增" onAction="#addDb" />
+        <Button layoutX="159.0" layoutY="421.0" mnemonicParsing="false" text="返回" onAction="#goback"/>
+        <Button layoutX="259.0" layoutY="421.0" mnemonicParsing="false" text="删除" onAction="#delete"/>
+    </children>
+
+
+
+</Pane>
