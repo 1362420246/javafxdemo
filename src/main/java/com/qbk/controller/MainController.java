@@ -4,7 +4,7 @@ package com.qbk.controller;
 import com.qbk.JavafxDemoApplication;
 import com.qbk.config.ContextAware;
 import com.qbk.datasource.DynamicDataSource;
-import com.qbk.util.WindowsNet;
+import com.qbk.util.OsNetUtil;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,7 +49,7 @@ public class MainController implements Initializable {
      */
     @FXML
     private void regAdd ( ActionEvent event) throws IOException {
-         boolean result = WindowsNet.regAdd();
+         boolean result = OsNetUtil.regAdd();
         if(result){
             Alert information = new Alert(Alert.AlertType.INFORMATION,"加入开启启动项成功");
             //设置标题，不设置默认标题为本地语言的information
@@ -68,7 +68,7 @@ public class MainController implements Initializable {
      */
     @FXML
     private void goHomepage( ActionEvent event) throws IOException {
-        WindowsNet.openWebpage("http://localhost:"+ JavafxDemoApplication.port);
+        OsNetUtil.openWebpage("http://localhost:"+ JavafxDemoApplication.port);
     }
 
     /**

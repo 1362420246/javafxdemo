@@ -1,7 +1,7 @@
 package com.qbk.controller;
 
 
-import com.qbk.util.WindowsNet;
+import com.qbk.util.OsNetUtil;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -38,7 +38,7 @@ public class IpController implements Initializable {
        String subnetMaskt = subnetMasktText.getText();
        String gateway = gatewayText.getText();
        String name = nameChoice.getValue();
-       boolean result = WindowsNet.updateWindowsAddresses(name, ip, subnetMaskt, gateway);
+       boolean result = OsNetUtil.updateWindowsAddresses(name, ip, subnetMaskt, gateway);
        if(result){
            Alert information = new Alert(Alert.AlertType.INFORMATION,"修改ip成功");
            //设置标题，不设置默认标题为本地语言的information
@@ -61,7 +61,7 @@ public class IpController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         log.info("ip初始化");
 
-        List<String> windowsAddresses = WindowsNet.getWindowsAddresses();
+        List<String> windowsAddresses = OsNetUtil.getWindowsAddresses();
 
         nameChoice.setItems(FXCollections.observableArrayList(windowsAddresses));
 
