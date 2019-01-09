@@ -5,16 +5,16 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -52,6 +52,7 @@ public class TableMain extends Application {
     public void start(Stage primaryStage) throws Exception {
         //表控件是通过实例化TableView类创建的。
         TableView table = new TableView();
+        //表格设置为可编辑
         table.setEditable(true);
 
         //然后使用TableColumn类创建三个列。
@@ -61,11 +62,23 @@ public class TableMain extends Application {
         firstNameCol.setCellValueFactory(
                 new PropertyValueFactory<Person,String>("firstName"));
 
+        //第二列
         TableColumn lastNameCol = new TableColumn("Last Name");
         lastNameCol.setMinWidth(100);
         //设置 表单列 展示的数据字段
         lastNameCol.setCellValueFactory(
                 new PropertyValueFactory<Person,String>("lastName"));
+        //给需要编辑的列设置属性
+        lastNameCol.setCellFactory(TextFieldTableCell.<Person>forTableColumn());
+        //创建单元格被修改事件
+        lastNameCol.setOnEditCommit(new EventHandler<CellEditEvent<Person, String>>() {
+            @Override
+            public void handle(CellEditEvent<Person, String> t) {
+                System.out.println(t.getNewValue());
+                //将新的值赋给获取到的单元格
+                ((Person) t.getTableView().getItems().get(t.getTablePosition().getRow())).setLastName(t.getNewValue());
+            }
+        });
 
         TableColumn emailCol = new TableColumn("Email");
 
