@@ -48,6 +48,7 @@ public class ChoiceBoxMain  extends Application {
         scene.cursorProperty().bind(choiceBoxRef.getSelectionModel()
                 .selectedItemProperty());
 
+        //添加选中监听
         choiceBoxRef.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {

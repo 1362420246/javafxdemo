@@ -1,0 +1,49 @@
+2019-01-02 14:12:38.109 INFO  org.springframework.boot.StartupInfoLogger 48 logStarting -- Starting application on LAPTOP-HITKVSFS with PID 7588 (started by 13624 in D:\daima\javafx-demo)
+2019-01-02 14:12:38.138 INFO  org.springframework.boot.SpringApplication 593 logStartupProfileInfo -- No active profile set, falling back to default profiles: default
+2019-01-02 14:12:38.227 INFO  org.springframework.context.support.AbstractApplicationContext 583 prepareRefresh -- Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@74946692: startup date [Wed Jan 02 14:12:38 CST 2019]; root of context hierarchy
+2019-01-02 14:12:38.298 INFO  org.hibernate.validator.internal.util.Version 30 <clinit> -- HV000001: Hibernate Validator 5.3.6.Final
+2019-01-02 14:12:41.291 INFO  org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer 92 initialize -- Tomcat initialized with port(s): 8083 (http)
+2019-01-02 14:12:41.315 INFO  org.apache.juli.logging.DirectJDKLog 180 log -- Initializing ProtocolHandler ["http-nio-8083"]
+2019-01-02 14:12:41.332 INFO  org.apache.juli.logging.DirectJDKLog 180 log -- Starting service [Tomcat]
+2019-01-02 14:12:41.334 INFO  org.apache.juli.logging.DirectJDKLog 180 log -- Starting Servlet Engine: Apache Tomcat/8.5.34
+2019-01-02 14:12:41.618 INFO  org.apache.juli.logging.DirectJDKLog 180 log -- Initializing Spring embedded WebApplicationContext
+2019-01-02 14:12:42.083 INFO  org.springframework.boot.web.servlet.ServletRegistrationBean 191 onStartup -- Mapping servlet: 'dispatcherServlet' to [/]
+2019-01-02 14:12:42.085 INFO  org.springframework.boot.web.servlet.ServletRegistrationBean 191 onStartup -- Mapping servlet: 'statViewServlet' to [/druid/*]
+2019-01-02 14:12:42.091 INFO  org.springframework.boot.web.servlet.AbstractFilterRegistrationBean 259 configure -- Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-01-02 14:12:42.091 INFO  org.springframework.boot.web.servlet.AbstractFilterRegistrationBean 259 configure -- Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-01-02 14:12:42.092 INFO  org.springframework.boot.web.servlet.AbstractFilterRegistrationBean 259 configure -- Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-01-02 14:12:42.092 INFO  org.springframework.boot.web.servlet.AbstractFilterRegistrationBean 259 configure -- Mapping filter: 'requestContextFilter' to: [/*]
+2019-01-02 14:12:42.093 INFO  org.springframework.boot.web.servlet.AbstractFilterRegistrationBean 272 configure -- Mapping filter: 'webStatFilter' to urls: [/*]
+2019-01-02 14:12:42.093 INFO  org.springframework.boot.web.servlet.AbstractFilterRegistrationBean 259 configure -- Mapping filter: 'corsFilter' to: [/*]
+2019-01-02 14:12:42.260 INFO  com.qbk.util.CommandUtil 84 systemCheck -- 当前操作系统：【windows 10】
+2019-01-02 14:12:42.276 INFO  com.qbk.util.CommandUtil 84 systemCheck -- 当前操作系统：【windows 10】
+2019-01-02 14:12:42.288 INFO  com.qbk.config.DataSourceConfig 52 dynamicDataSource -- driveClass：【oracle.jdbc.OracleDriver】，url:【jdbc:oracle:thin:@127.0.0.1:1521:orcl】,username:【scott】,password:【scott】
+2019-01-02 14:12:42.705 INFO  com.alibaba.druid.pool.DruidDataSource 928 init -- {dataSource-1,default} inited
+2019-01-02 14:12:42.706 INFO  com.qbk.config.DataSourceConfig 69 dynamicDataSource -- 初始化数据源成功
+2019-01-02 14:12:43.183 INFO  com.qbk.datasource.DynamicDataSource 57 determineCurrentLookupKey -- ---当前数据源：默认数据源---
+2019-01-02 14:12:43.358 INFO  com.qbk.datasource.DynamicDataSource 94 createDataSource -- driveClass：【com.mysql.jdbc.Driver】，url:【jdbc:mysql://127.0.0.1:3306/test】,username:【root】,password:【123456】
+2019-01-02 14:12:43.576 INFO  com.alibaba.druid.pool.DruidDataSource 928 init -- {dataSource-2,ss} inited
+2019-01-02 14:12:43.576 INFO  com.qbk.service.impl.DbManageServiceImpl 67 initLoad -- 数据源【ss】加载成功
+2019-01-02 14:12:43.577 INFO  com.qbk.datasource.DynamicDataSource 94 createDataSource -- driveClass：【com.mysql.jdbc.Driver】，url:【jdbc:mysql://127.0.0.1:3306/test】,username:【root】,password:【123456】
+2019-01-02 14:12:43.585 INFO  com.alibaba.druid.pool.DruidDataSource 928 init -- {dataSource-3,test} inited
+2019-01-02 14:12:43.585 INFO  com.qbk.service.impl.DbManageServiceImpl 67 initLoad -- 数据源【test】加载成功
+2019-01-02 14:12:43.585 INFO  com.qbk.datasource.DynamicDataSource 94 createDataSource -- driveClass：【com.mysql.jdbc.Driver】，url:【jdbc:mysql://127.0.0.1:3306/test2】,username:【root】,password:【123456】
+2019-01-02 14:12:43.592 INFO  com.alibaba.druid.pool.DruidDataSource 928 init -- {dataSource-4,t} inited
+2019-01-02 14:12:43.592 INFO  com.qbk.service.impl.DbManageServiceImpl 67 initLoad -- 数据源【t】加载成功
+2019-01-02 14:12:44.975 INFO  org.springframework.jmx.export.MBeanExporter 431 afterSingletonsInstantiated -- Registering beans for JMX exposure on startup
+2019-01-02 14:12:44.978 INFO  org.springframework.jmx.export.MBeanExporter 918 autodetect -- Bean with name 'statFilter' has been autodetected for JMX exposure
+2019-01-02 14:12:44.985 INFO  org.springframework.jmx.export.MBeanExporter 672 registerBeanInstance -- Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2019-01-02 14:12:44.995 INFO  org.apache.juli.logging.DirectJDKLog 180 log -- Starting ProtocolHandler ["http-nio-8083"]
+2019-01-02 14:12:45.025 INFO  org.apache.juli.logging.DirectJDKLog 180 log -- Using a shared selector for servlet write/read
+2019-01-02 14:12:45.057 INFO  org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer 216 start -- Tomcat started on port(s): 8083 (http)
+2019-01-02 14:12:45.065 INFO  org.springframework.boot.StartupInfoLogger 57 logStarted -- Started application in 7.529 seconds (JVM running for 10.525)
+2019-01-02 14:12:45.213 INFO  com.qbk.controller.MainController 88 initialize -- main初始化
+2019-01-02 14:12:48.588 INFO  com.qbk.controller.IpController 62 initialize -- ip初始化
+2019-01-02 14:12:48.589 INFO  com.qbk.util.CommandUtil 84 systemCheck -- 当前操作系统：【windows 10】
+2019-01-02 14:12:50.039 INFO  com.qbk.controller.MainController 88 initialize -- main初始化
+2019-01-02 14:12:57.643 INFO  com.qbk.util.CommandUtil 84 systemCheck -- 当前操作系统：【windows 10】
+2019-01-02 14:12:57.655 INFO  com.qbk.controller.CommonConfigController 73 initialize -- 通用配置初始化
+2019-01-02 14:12:58.795 INFO  com.qbk.controller.MainController 88 initialize -- main初始化
+2019-01-02 14:13:00.337 INFO  com.qbk.controller.DbManageController 154 initialize -- 数据库管理初始化
+2019-01-02 14:13:00.343 INFO  com.qbk.datasource.DynamicDataSource 57 determineCurrentLookupKey -- ---当前数据源：默认数据源---
+2019-01-02 14:13:04.127 INFO  com.qbk.controller.PopupController 75 initialize -- 弹窗初始化
